@@ -46,6 +46,11 @@ public class Usuario extends Identifiable {
 
 	@ManyToMany
 	@ListProperties("nombre, descripcion, activo")
-	Collection<Rol> roles;
+	Collection<Rol> roles = new ArrayList<>();
+
+	@PrePersist
+	void registrarFecha() {
+		if (fechaRegistro == null) fechaRegistro = LocalDate.now();
+	}
 
 }

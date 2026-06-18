@@ -25,4 +25,9 @@ public class Estudiante extends Usuario {
 
 	LocalDate fechaIngreso;
 
+	@PrePersist
+	void registrarIngreso() {
+		if (fechaIngreso == null) fechaIngreso = LocalDate.now();
+	}
+
 }
