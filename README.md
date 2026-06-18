@@ -44,3 +44,20 @@ Entidades creadas para la base del sistema:
 - `Administrador`
 - `Estudiante`
 - `Docente`
+
+## Paquetes base
+
+- `com.AptiSpace_BFA.AptiSpace_BFA.model`
+- `com.AptiSpace_BFA.AptiSpace_BFA.actions`
+- `com.AptiSpace_BFA.AptiSpace_BFA.validators`
+- `com.AptiSpace_BFA.AptiSpace_BFA.calculators`
+
+## Flujo de ramas
+
+- `main`: rama estable.
+- `dev`: rama de integracion del equipo.
+- `feature/andres-base-openxava`: base OpenXava, PostgreSQL e integracion.
+- `feature/elias-academico`: modulo academico.
+- `feature/diego-evaluaciones-ui`: evaluaciones, asistencia e interfaz OpenXava.
+
+Nadie trabaja directo en `main`. Cada integrante trabaja en su rama y todo se integra primero en `dev`.
