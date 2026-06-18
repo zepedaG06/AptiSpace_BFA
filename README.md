@@ -26,7 +26,7 @@ La aplicacion queda configurada con:
 ## Ejecutar
 
 ```bash
-mvn openxava:run
+mvn compile exec:java
 ```
 
 Abrir:
