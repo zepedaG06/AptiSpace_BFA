@@ -19,8 +19,8 @@ Entrar a PostgreSQL con un usuario administrador y ejecutar:
 La aplicacion queda configurada con:
 
 - Base de datos: `aptispace_bfa`
-- Usuario: `aptispace`
-- Clave: `aptispace`
+- Usuario: `aptispace_bfa`
+- Clave: `aptispace_bfa`
 - URL JDBC: `jdbc:postgresql://localhost:5432/aptispace_bfa`
 
 ## Ejecutar
@@ -32,7 +32,7 @@ mvn compile exec:java
 Abrir:
 
 ```text
-http://localhost:8080/aptispace
+http://localhost:8080/aptispace_bfa
 ```
 
 ## Modulo base
