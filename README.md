@@ -26,7 +26,7 @@ La aplicacion queda configurada con:
 ## Ejecutar
 
 ```bash
-mvn compile exec:java
+mvn package exec:java
 ```
 
 Abrir:
