@@ -9,8 +9,7 @@ import org.openxava.util.*;
 public class AptiSpace_BFA {
 
 	public static void main(String[] args) throws Exception {
-		DBServer.start("AptiSpace_BFA-db"); // To use your own database comment this line and configure src/main/webapp/META-INF/context.xml
-		AppServer.run("AptiSpace_BFA"); // Use AppServer.run("") to run in root context
+		AppServer.run("aptispace"); // Use AppServer.run("") to run in root context
 	}
 
 }
