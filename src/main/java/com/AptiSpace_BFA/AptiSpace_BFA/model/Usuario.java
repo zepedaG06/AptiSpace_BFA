@@ -35,6 +35,7 @@ public class Usuario extends Identifiable {
 
 	@Column(length=100, unique=true)
 	@Required
+	@Stereotype("EMAIL")
 	String correo;
 
 	@Column(length=20)
@@ -42,6 +43,7 @@ public class Usuario extends Identifiable {
 
 	boolean activo = true;
 
+	@ReadOnly
 	LocalDate fechaRegistro = LocalDate.now();
 
 	@ManyToMany

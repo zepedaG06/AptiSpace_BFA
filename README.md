@@ -1,6 +1,6 @@
 # AptiSpace BFA
 
-Proyecto base OpenXava puro con PostgreSQL local.
+Proyecto base OpenXava puro con PostgreSQL local para gestionar usuarios del sistema AptiSpace BFA, orientado a ejercicios de aptitud espacial, orientacion y desplazamiento.
 
 ## Requisitos
 
@@ -52,12 +52,9 @@ Entidades creadas para la base del sistema:
 - `com.AptiSpace_BFA.AptiSpace_BFA.validators`
 - `com.AptiSpace_BFA.AptiSpace_BFA.calculators`
 
-## Flujo de ramas
+## Flujo de trabajo actual
 
 - `main`: rama estable.
-- `dev`: rama de integracion del equipo.
-- `feature/andres-base-openxava`: base OpenXava, PostgreSQL e integracion.
-- `feature/elias-academico`: modulo academico.
-- `feature/diego-evaluaciones-ui`: evaluaciones, asistencia e interfaz OpenXava.
+- `andres`: rama de trabajo actual para la base OpenXava.
 
-Nadie trabaja directo en `main`. Cada integrante trabaja en su rama y todo se integra primero en `dev`.
+Por ahora todo el trabajo de la base se realiza en `andres`. No se trabaja directo en `main`.

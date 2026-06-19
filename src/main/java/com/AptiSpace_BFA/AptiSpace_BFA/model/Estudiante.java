@@ -12,7 +12,7 @@ import lombok.*;
 @Getter @Setter
 @View(members=
 	"Datos personales { cedula; nombres, apellidos; correo, telefono } " +
-	"Datos academicos { carnet, fechaIngreso } " +
+	"Datos de practica { carnet, fechaIngreso } " +
 	"Estado { activo, fechaRegistro } " +
 	"Seguridad { roles }"
 )
@@ -23,6 +23,7 @@ public class Estudiante extends Usuario {
 	@Required
 	String carnet;
 
+	@ReadOnly
 	LocalDate fechaIngreso;
 
 	@PrePersist
