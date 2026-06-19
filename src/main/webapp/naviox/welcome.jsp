@@ -1,6 +1,6 @@
 <%Servlets.setCharacterEncoding(request, response);%>
 
-<%-- Welcome page. Feel free to modify at your taste --%>
+<%-- AptiSpace BFA welcome page. --%>
 
 <%@include file="../xava/imports.jsp"%>
 
@@ -12,14 +12,7 @@
 <%@page import="org.openxava.util.XavaPreferences"%>
 <%@page import="org.openxava.web.Browsers"%> 
 
-<%-- To put your own text add entries in the i18n messages files of your project 
-In AptiSpace_BFA-labels_en.properties:
-AptiSpace_BFA=My application
-AptiSpace_BFA[description]=My application does this and that
-
-In AptiSpace_BFA-messages_en.properties:
-welcome_point1=This is a additional explanatory line
---%>
+<%-- Main texts are defined in the project i18n files. --%>
 
 <%
 MetaApplication metaApplication = MetaApplications.getMainMetaApplication(); 
@@ -35,6 +28,7 @@ if (title == null) title = metaApplication.getLabel();
 	<title><%=title%></title>
 	<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
 	<link href="<%=request.getContextPath()%>/xava/style/<%=XavaPreferences.getInstance().getStyleCSS()%>?ox=<%=oxVersion%>" rel="stylesheet" type="text/css">
+	<link href="<%=request.getContextPath()%>/xava/style/custom.css?ox=<%=oxVersion%>" rel="stylesheet" type="text/css">
 </head>
 
 <body id="welcome" <%=XavaStyle.getBodyClass(request)%>>
