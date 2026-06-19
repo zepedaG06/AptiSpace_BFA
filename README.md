@@ -35,6 +35,17 @@ Abrir:
 http://localhost:8080/aptispace_bfa
 ```
 
+## Datos de prueba
+
+Con la aplicacion ejecutada al menos una vez para que OpenXava cree las tablas, cargar datos base con:
+
+```sql
+\c aptispace_bfa
+\i sql/datos_prueba_base.sql
+```
+
+El script crea roles y usuarios de prueba para administrador, estudiante y docente. Se puede ejecutar varias veces sin duplicar registros.
+
 ## Modulo base
 
 Entidades creadas para la base del sistema:
