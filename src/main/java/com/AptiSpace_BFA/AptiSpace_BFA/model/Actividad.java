@@ -8,11 +8,14 @@ import lombok.*;
 @Entity
 @Getter @Setter
 @View(members =
+    "Datos {" +
         "nombre;" +
-                "descripcion;" +
-                "fechaEntrega;" +
-                "seccion"
+        "descripcion;" +
+        "fechaEntrega;" +
+        "seccion" +
+    "}"
 )
+@Tab(properties = "nombre, fechaEntrega, seccion.nombre")
 public class Actividad {
 
     @Id
