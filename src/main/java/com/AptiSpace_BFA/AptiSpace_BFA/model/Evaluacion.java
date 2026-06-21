@@ -8,6 +8,18 @@ import lombok.*;
 
 @Entity
 @Getter @Setter
+@Views({
+    @View(members =
+        "Datos {" +
+            "nombre;" +
+            "porcentaje;" +
+            "fecha;" +
+            "seccion" +
+        "}"
+    ),
+    @View(name = "Simple", members = "nombre; fecha")
+})
+@Tab(properties = "nombre, porcentaje, fecha, seccion.nombre")
 public class Evaluacion {
 
     @Id
