@@ -12,4 +12,15 @@ public class Calificacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ReadOnly
     Long id;
+
+    @ManyToOne
+    @DescriptionsList
+    @Required
+    Estudiante estudiante;
+
+    @ManyToOne
+    @DescriptionsList
+    @ReferenceView("Simple")
+    @Required
+    Evaluacion evaluacion;
 }
