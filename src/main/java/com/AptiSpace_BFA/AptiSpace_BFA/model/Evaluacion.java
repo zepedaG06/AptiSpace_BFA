@@ -2,6 +2,7 @@ package com.AptiSpace_BFA.AptiSpace_BFA.model;
 
 import java.time.*;
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import org.openxava.annotations.*;
 import lombok.*;
 
@@ -19,6 +20,8 @@ public class Evaluacion {
     String nombre;
 
     @Required
+    @DecimalMin("0")
+    @DecimalMax("100")
     Double porcentaje;
 
     @Required
