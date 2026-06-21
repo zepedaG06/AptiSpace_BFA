@@ -6,8 +6,7 @@ import org.openxava.annotations.*;
 import lombok.*;
 
 @Entity
-@Getter
-@Setter
+@Getter @Setter
 @View(members =
         "nombre;" +
                 "descripcion;" +
@@ -18,20 +17,21 @@ public class Actividad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @ReadOnly
+    Long id;
 
     @Column(length = 100)
     @Required
-    private String nombre;
+    String nombre;
 
     @Stereotype("MEMO")
-    private String descripcion;
+    String descripcion;
 
     @Required
-    private LocalDate fechaEntrega;
+    LocalDate fechaEntrega;
 
     @ManyToOne
     @DescriptionsList
     @Required
-    private Seccion seccion;
+    Seccion seccion;
 }
