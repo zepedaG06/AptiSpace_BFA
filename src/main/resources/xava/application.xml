@@ -19,5 +19,17 @@
 		<controller name="Print"/>
 	</module>		
 	-->
+
+	<module name="CursosPorDocente">
+		<model name="Seccion"/>
+		<tab name="CursosPorDocente"/>
+		<controller name="Typical"/>
+	</module>
+
+	<module name="EstudiantesPorSeccion">
+		<model name="Matricula"/>
+		<tab name="EstudiantesPorSeccion"/>
+		<controller name="Typical"/>
+	</module>
 	
 </application>
