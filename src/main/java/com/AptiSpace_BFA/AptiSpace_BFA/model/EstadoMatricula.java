@@ -19,7 +19,7 @@ import lombok.*;
         @Tab(properties="estudiante.carnet, estudiante.nombres, estudiante.apellidos, seccion.codigo, seccion.curso.nombre, periodoAcademico.nombre, fechaMatricula, estado"),
         @Tab(name="EstudiantesPorSeccion", properties="seccion.codigo, seccion.curso.nombre, estudiante.carnet, estudiante.nombres, estudiante.apellidos, periodoAcademico.nombre, estado")
 })
-public class Matricula extends Identifiable {
+public class EstadoMatricula extends Identifiable {
 
     @ManyToOne(fetch=FetchType.LAZY, optional=false)
     @Required
