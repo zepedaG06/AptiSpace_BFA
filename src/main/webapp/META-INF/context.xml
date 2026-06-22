@@ -17,12 +17,13 @@
 	driver to the pom.xml of your project.
 	-->
 	 
-	<!-- HSQLDB -->   	
+	<!-- HSQLDB   	
     <Resource name="jdbc/AptiSpace_BFADS" auth="Container" type="javax.sql.DataSource"
 	      maxTotal="20" maxIdle="5" maxWaitMillis="10000"
 	      username="sa" password="" 
 	      driverClassName="org.hsqldb.jdbc.JDBCDriver"
 	      url="jdbc:hsqldb:hsql://localhost:1666"/>
+	-->
 	      
 	<!-- MySQL       
     <Resource name="jdbc/AptiSpace_BFADS" auth="Container" type="javax.sql.DataSource"
@@ -32,13 +33,11 @@
 	      url="jdbc:mysql://localhost:3306/AptiSpace_BFAdb"/>	      
 	-->      
 	
-	<!-- PostgreSQL 
 	<Resource name="jdbc/AptiSpace_BFADS" auth="Container" type="javax.sql.DataSource"
 	      maxTotal="20" maxIdle="5" maxWaitMillis="10000"
-	      username="postgres" password=""
+	      username="aptispace_bfa" password="aptispace_bfa"
 	      driverClassName="org.postgresql.Driver" 
-	      url="jdbc:postgresql://localhost/AptiSpace_BFAdb"/>
-	-->
+	      url="jdbc:postgresql://localhost:5432/aptispace_bfa"/>
 	
 	<!-- Oracle 
 	<Resource name="jdbc/AptiSpace_BFADS" auth="Container" type="javax.sql.DataSource"

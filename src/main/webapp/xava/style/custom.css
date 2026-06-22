@@ -1,3 +1,28 @@
-/*
-Put here your own style
-*/
+#welcome {
+	background: linear-gradient(135deg, #f4f8fb 0%, #e9f1f7 100%);
+	min-height: 100vh;
+	padding: 56px 24px;
+}
+
+#welcome h1 {
+	color: #14324a;
+	font-size: 36px;
+	margin-bottom: 16px;
+}
+
+#welcome p {
+	color: #2f4858;
+	font-size: 18px;
+	line-height: 1.45;
+	max-width: 720px;
+}
+
+#welcome #signin_tip {
+	color: #496170;
+	font-size: 16px;
+	margin-top: 8px;
+}
+
+#welcome .ox-bottom-buttons {
+	margin-top: 28px;
+}
