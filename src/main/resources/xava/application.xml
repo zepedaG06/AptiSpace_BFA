@@ -1,35 +1,22 @@
-<?xml version = "1.0" encoding = "ISO-8859-1"?>
-
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE application SYSTEM "dtds/application.dtd">
+<application name="AptiSpace_BFA">
+    <default-module>
+        <controller name="Typical"/>
+    </default-module>
 
-<application name="aptispace_bfa"> 
-	
-	<!-- 
-	A default module for each entity is assumed with the
-	controllers on <default-module/>
-	-->
-	<default-module>		  
-		<controller name="Typical"/>		
-	</default-module>
-	
-	<!-- 
-	You can define additional modules, for example:	  
-	<module name="OnlyReadTeacher">
-		<model name="Teacher"/>
-		<controller name="Print"/>
-	</module>		
-	-->
+    <module name="PanelPsicologo" label="Panel psicólogo"><model name="PanelPsicologo"/><web-view url="/WEB-INF/jsp/panel-psicologo.jsp"/></module>
+    <module name="Usuario" label="Usuarios"><model name="Usuario"/><controller name="Typical"/></module>
+    <module name="Evaluado" label="Evaluados"><model name="Evaluado"/><controller name="Typical"/></module>
+    <module name="GrupoEvaluacion" label="Grupos"><model name="GrupoEvaluacion"/><controller name="Typical"/></module>
+    <module name="PlantillaCorreccion" label="Plantillas"><model name="PlantillaCorreccion"/><controller name="Typical"/></module>
+    <module name="AplicacionPrueba" label="Aplicaciones"><model name="AplicacionPrueba"/><controller name="AplicacionPrueba"/></module>
+    <module name="ResultadoPrueba" label="Resultados"><model name="ResultadoPrueba"/><controller name="Typical"/></module>
+    <module name="ObservacionPsicologica" label="Observaciones"><model name="ObservacionPsicologica"/><controller name="Typical"/></module>
 
-	<module name="CursosPorDocente">
-		<model name="Seccion"/>
-		<tab name="CursosPorDocente"/>
-		<controller name="Typical"/>
-	</module>
-
-	<module name="EstudiantesPorSeccion">
-		<model name="Matricula"/>
-		<tab name="EstudiantesPorSeccion"/>
-		<controller name="Typical"/>
-	</module>
-	
+    <module name="PanelEvaluado" label="Panel evaluado"><model name="PanelEvaluado"/><web-view url="/WEB-INF/jsp/panel-evaluado.jsp"/></module>
+    <module name="MisDatos" label="Mis datos"><model name="Evaluado"/><controller name="EvaluadoSeguro"/></module>
+    <module name="MisGrupos" label="Mis grupos"><model name="GrupoEvaluacion"/><controller name="EvaluadoSeguro"/></module>
+    <module name="ResponderPrueba" label="Responder prueba"><model name="RespuestaEvaluado"/><controller name="EvaluadoSeguro"/></module>
+    <module name="MisResultados" label="Mis resultados"><model name="ResultadoPrueba"/><controller name="EvaluadoSeguro"/></module>
 </application>

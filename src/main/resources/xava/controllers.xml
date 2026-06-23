@@ -1,36 +1,14 @@
-﻿<?xml version = "1.0" encoding = "ISO-8859-1"?>
-
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE controllers SYSTEM "dtds/controllers.dtd">
-
-<!-- 
-Controllers doc: 
-https://www.openxava.org/OpenXavaDoc/docs/controllers_en.html
-
-Default controllers included in OpenXava (you can extend from them):
-https://github.com/openxava/openxava/blob/master/openxava/src/main/resources/xava/default-controllers.xml
- 
-Examples of controllers (from test application):
-https://github.com/openxava/openxava/blob/master/openxavatest/src/main/resources/xava/controllers.xml
--->
-
 <controllers>
-    
-    <!-- Environment variable:
-    <env-var name="AptiSpace_BFA_DEFAULT_YEAR" value="2015"/> 
-    -->
-    
-    <!-- Session object:
-    <object name="AptiSpace_BFA_activeYear" class="java.lang.Integer" value="2015" 
-    	    scope="global"/>    
-    -->
-    
-    <!-- Controller:
-    <controller name="Teacher">
-    	<extends controller="Typical"/>
-    	<action name="new" icon="plus-box-multiple" keystroke="Control N"
-        	class="actions.CreateTeacher">
-    	</action>
-	</controller>    
-    -->
-    
+    <controller name="EvaluadoSeguro">
+        <extends controller="Typical" excluded-actions="CRUD.new, CRUD.delete, CRUD.deleteSelected, CRUD.deleteRow, Print.generatePdf, Print.generateExcel, ImportData.importData"/>
+    </controller>
+
+    <controller name="AplicacionPrueba">
+        <extends controller="Typical"/>
+        <action name="iniciar" mode="detail" class="com.aptispace.acciones.IniciarPruebaAction" icon="play_arrow"/>
+        <action name="finalizar" mode="detail" class="com.aptispace.acciones.FinalizarPruebaAction" icon="stop"/>
+        <action name="calcularResultado" mode="detail" class="com.aptispace.acciones.CalcularResultadoAction" icon="calculate"/>
+    </controller>
 </controllers>

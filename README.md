@@ -1,78 +1,129 @@
-# AptiSpace BFA
+﻿# AptiSpace_BFA
 
-Proyecto OpenXava con PostgreSQL local para gestionar usuarios, docentes, estudiantes, cursos, matriculas, actividades, evaluaciones, calificaciones y asistencias del sistema AptiSpace BFA.
+Proyecto web Java/OpenXava para evaluación de aptitud espacial - desplazamiento S2.
 
-## Requisitos
+## Abrir en IntelliJ IDEA
+1. Abrir IntelliJ IDEA.
+2. Seleccionar `Open`.
+3. Elegir la carpeta `C:\Users\Casa\AptiSpace_BFA`.
+4. Importar como proyecto Maven.
 
-- Java 17
-- Maven
-- PostgreSQL local en el puerto 5432
-
-## Base de datos local
-
-Entrar a PostgreSQL con un usuario administrador y ejecutar:
-
-```sql
-\i sql/crear_base_postgresql.sql
-```
-
-La aplicacion queda configurada con:
-
-- Base de datos: `aptispace_bfa`
-- Usuario: `aptispace_bfa`
-- Clave: `aptispace_bfa`
-- URL JDBC: `jdbc:postgresql://localhost:5432/aptispace_bfa`
-
-## Ejecutar
-
-```bash
-mvn package exec:java
-```
-
-Abrir:
+## URL oficial
+La app desplegada en Railway esta disponible en:
 
 ```text
-http://localhost:8080/aptispace_bfa
+https://aptispace-production.up.railway.app/AptiSpace/
 ```
 
-## Datos de prueba
+Ruta de verificacion:
 
-Con la aplicacion ejecutada al menos una vez para que OpenXava cree las tablas, cargar datos base con:
-
-```sql
-\c aptispace_bfa
-\i sql/datos_prueba_base.sql
+```text
+http://localhost:8080/AptiSpace_BFA/m/Usuario
 ```
 
-El script crea roles, usuarios y datos academicos de prueba. Se puede ejecutar varias veces sin duplicar registros.
+La aplicacion debe abrir un modulo OpenXava.
 
-## Modulos principales
+## Estructura
+- `src/main/java/com/aptispace/modelo`: entidades JPA.
+- `src/main/java/com/aptispace/servicio`: lógica de corrección.
+- `src/main/java/com/aptispace/acciones`: acciones OpenXava.
+- `src/main/resources/xava`: módulos y controladores OpenXava.
+- `sql/postgresql_schema.sql`: modelo relacional PostgreSQL.
+- `docs/analisis-y-uml.md`: análisis, requerimientos y UML.
 
-Entidades creadas para el sistema:
+## Corrección S2
+S2 = aciertos - errores. Si el valor es menor que cero, el sistema guarda cero.
 
-- `Usuario`
-- `Rol`
-- `Administrador`
-- `Estudiante`
-- `Docente`
-- `Asignatura`
-- `Curso`
-- `Seccion`
-- `PeriodoAcademico`
-- `Matricula`
-- `Actividad`
-- `Evaluacion`
-- `Calificacion`
-- `Asistencia`
+## Flujo de prueba actual
+El banco S2 ya viene precargado con ejercicios, opciones e imagenes de ejemplo.
+El psicologo no necesita crear las imagenes ni armar cada ejercicio manualmente.
 
-## Paquetes base
+1. Entrar a `AplicacionPrueba`.
+2. Crear una aplicacion seleccionando el evaluado, la prueba S2 y el psicologo.
+3. Guardar la aplicacion.
+4. Presionar `iniciar`.
+5. El sistema asigna automaticamente ejercicios aleatorios segun `cantidadEjercicios` de la prueba.
+6. Abrir las respuestas generadas y marcar las opciones A-E.
+7. Presionar `finalizar`.
+8. Presionar `calcularResultado`.
 
-- `com.AptiSpace_BFA.AptiSpace_BFA.model`
-- `com.AptiSpace_BFA.AptiSpace_BFA.actions`
-- `com.AptiSpace_BFA.AptiSpace_BFA.validators`
-- `com.AptiSpace_BFA.AptiSpace_BFA.calculators`
+Para variar la cantidad aplicada, editar la prueba y cambiar `cantidadEjercicios`.
+Cada nueva aplicacion toma una muestra aleatoria diferente del banco disponible.
 
-## Flujo de trabajo actual
+## Ejecutar
+Desde `C:\Users\Casa\AptiSpace_BFA`:
 
-- `main`: rama estable.
-- Ramas personales: se integran a `main` cuando cada parte compila y se revisa en OpenXava.
+```powershell
+mvn cargo:run
+```
+
+## PostgreSQL local
+La app esta configurada para guardar en PostgreSQL:
+
+```text
+Base: aptispace
+Usuario: aptispace
+Clave: aptispace123
+URL: jdbc:postgresql://localhost:5432/aptispace
+```
+
+Crear la base y el usuario con la clave del superusuario `postgres`:
+
+```powershell
+& "C:\Program Files\PostgreSQL\18\bin\psql.exe" -U postgres -f sql\postgresql_setup.sql
+```
+
+Si quieres crear el esquema manualmente:
+
+```powershell
+& "C:\Program Files\PostgreSQL\18\bin\psql.exe" -U aptispace -d aptispace -f sql\postgresql_schema.sql
+```
+
+URL local:
+
+```text
+http://localhost:8080/AptiSpace_BFA/
+```
+
+Usuarios de prueba:
+
+```text
+Evaluador: evaluador@aptispace.local / evaluador123
+Evaluado: evaluado@aptispace.local / evaluado123
+```
+
+El evaluador controla plantillas, grupos, asignaciones, resultados y observaciones.
+El evaluado solo entra a su prueba, resultado e informacion personal.
+
+## Railway
+Railway despliega desde la rama `main`.
+
+Variables esperadas en el servicio web:
+
+```text
+PORT
+DATABASE_URL
+APTISPACE_SESSION_SECRET
+```
+
+`DATABASE_URL` debe referenciar la base PostgreSQL de Railway, por ejemplo:
+
+```text
+${{aptispace-db.DATABASE_URL}}
+```
+
+No usar `JDBC_DATABASE_URL` junto con `DATABASE_URL`, porque la app prioriza `JDBC_DATABASE_URL`.
+
+El deploy usa el WAR precompilado:
+
+```text
+deploy/AptiSpace_BFA.war
+```
+
+Si se cambia codigo Java, JSP o recursos de la app, recompilar y actualizar el WAR antes de hacer push:
+
+```powershell
+mvn.cmd -DskipTests package
+Copy-Item target\AptiSpace_BFA.war deploy\AptiSpace_BFA.war -Force
+```
+
