@@ -13,7 +13,7 @@ import lombok.*;
 @Entity
 @Getter @Setter
 @View(members=
-        "Datos de seccion { codigo, curso; docente } " +
+        "DatosDeSeccion { codigo, curso; docente } " +
                 "Organizacion { horario, aula; cupo } " +
                 "Matriculas { matriculas }"
 )

@@ -13,7 +13,7 @@ import lombok.*;
 @Entity
 @Getter @Setter
 @View(members=
-        "Datos del periodo { codigo, nombre; fechaInicio, fechaFin; activo } " +
+        "DatosDelPeriodo { codigo, nombre; fechaInicio, fechaFin; activo } " +
                 "Matriculas { matriculas }"
 )
 @Tab(properties="codigo, nombre, fechaInicio, fechaFin, activo")

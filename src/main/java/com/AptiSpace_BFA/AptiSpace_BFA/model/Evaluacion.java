@@ -19,7 +19,7 @@ import lombok.*;
     ),
     @View(name = "Simple", members = "nombre; fecha")
 })
-@Tab(properties = "nombre, porcentaje, fecha, seccion.nombre")
+@Tab(properties = "nombre, porcentaje, fecha, seccion.codigo, seccion.curso.nombre")
 public class Evaluacion {
 
     @Id

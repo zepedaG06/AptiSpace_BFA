@@ -11,8 +11,8 @@ import lombok.*;
 @Entity
 @Getter @Setter
 @View(members=
-	"Datos personales { cedula; nombres, apellidos; correo, telefono } " +
-	"Datos de practica { carnet, fechaIngreso } " +
+	"DatosPersonales { cedula; nombres, apellidos; correo, telefono } " +
+	"DatosDePractica { carnet, fechaIngreso } " +
 	"Estado { activo, fechaRegistro } " +
 	"Seguridad { roles }"
 )

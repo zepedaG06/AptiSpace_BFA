@@ -15,7 +15,7 @@ import lombok.*;
         "seccion" +
     "}"
 )
-@Tab(properties = "nombre, fechaEntrega, seccion.nombre")
+@Tab(properties = "nombre, fechaEntrega, seccion.codigo, seccion.curso.nombre")
 public class Actividad {
 
     @Id

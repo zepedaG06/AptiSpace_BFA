@@ -14,7 +14,7 @@ import lombok.*;
 @Inheritance(strategy=InheritanceType.JOINED)
 @Getter @Setter
 @View(members=
-	"Datos personales { cedula; nombres, apellidos; correo, telefono } " +
+	"DatosPersonales { cedula; nombres, apellidos; correo, telefono } " +
 	"Estado { activo, fechaRegistro } " +
 	"Seguridad { roles }"
 )

@@ -10,7 +10,7 @@ import lombok.*;
 @Entity
 @Getter @Setter
 @View(members=
-	"Datos generales { nombre, activo; descripcion }"
+	"DatosGenerales { nombre, activo; descripcion }"
 )
 @Tab(properties="nombre, descripcion, activo")
 public class Rol extends Identifiable {

@@ -1,6 +1,6 @@
 # AptiSpace BFA
 
-Proyecto base OpenXava puro con PostgreSQL local para gestionar usuarios del sistema AptiSpace BFA, orientado a ejercicios de aptitud espacial, orientacion y desplazamiento.
+Proyecto OpenXava con PostgreSQL local para gestionar usuarios, docentes, estudiantes, cursos, matriculas, actividades, evaluaciones, calificaciones y asistencias del sistema AptiSpace BFA.
 
 ## Requisitos
 
@@ -44,17 +44,26 @@ Con la aplicacion ejecutada al menos una vez para que OpenXava cree las tablas, 
 \i sql/datos_prueba_base.sql
 ```
 
-El script crea roles y usuarios de prueba para administrador, estudiante y docente. Se puede ejecutar varias veces sin duplicar registros.
+El script crea roles, usuarios y datos academicos de prueba. Se puede ejecutar varias veces sin duplicar registros.
 
-## Modulo base
+## Modulos principales
 
-Entidades creadas para la base del sistema:
+Entidades creadas para el sistema:
 
 - `Usuario`
 - `Rol`
 - `Administrador`
 - `Estudiante`
 - `Docente`
+- `Asignatura`
+- `Curso`
+- `Seccion`
+- `PeriodoAcademico`
+- `Matricula`
+- `Actividad`
+- `Evaluacion`
+- `Calificacion`
+- `Asistencia`
 
 ## Paquetes base
 
@@ -66,6 +75,4 @@ Entidades creadas para la base del sistema:
 ## Flujo de trabajo actual
 
 - `main`: rama estable.
-- `andres`: rama de trabajo actual para la base OpenXava.
-
-Por ahora todo el trabajo de la base se realiza en `andres`. No se trabaja directo en `main`.
+- Ramas personales: se integran a `main` cuando cada parte compila y se revisa en OpenXava.

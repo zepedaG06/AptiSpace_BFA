@@ -45,3 +45,55 @@ WHERE NOT EXISTS (
 	WHERE usuario_id = 'usrdocente0000000000000000001'
 	AND roles_id = 'roldocente0000000000000000001'
 );
+
+INSERT INTO asignatura (id, codigo, nombre, creditos, descripcion)
+SELECT 'asig00000000000000000000000001', 'MAT-ESP', 'Aptitud espacial', 4, 'Asignatura base para practica de orientacion y razonamiento espacial'
+WHERE NOT EXISTS (SELECT 1 FROM asignatura WHERE codigo = 'MAT-ESP');
+
+INSERT INTO curso (id, codigo, nombre, descripcion, asignatura_id)
+SELECT 'curso0000000000000000000000001', 'CUR-ESP-01', 'Curso inicial de aptitud espacial', 'Curso de prueba para el flujo academico', 'asig00000000000000000000000001'
+WHERE NOT EXISTS (SELECT 1 FROM curso WHERE codigo = 'CUR-ESP-01');
+
+INSERT INTO periodoacademico (id, activo, codigo, nombre, fechainicio, fechafin)
+SELECT 'periodo00000000000000000000001', true, '2026-I', 'Primer periodo 2026', DATE '2026-01-15', DATE '2026-06-30'
+WHERE NOT EXISTS (SELECT 1 FROM periodoacademico WHERE codigo = '2026-I');
+
+INSERT INTO seccion (id, codigo, horario, aula, cupo, curso_id, docente_id)
+SELECT 'seccion00000000000000000000001', 'SEC-ESP-01', 'Lunes y miercoles 08:00-10:00', 'A-101', 30, 'curso0000000000000000000000001', 'usrdocente0000000000000000001'
+WHERE NOT EXISTS (SELECT 1 FROM seccion WHERE codigo = 'SEC-ESP-01');
+
+INSERT INTO matricula (id, fechamatricula, estado, estudiante_id, seccion_id, periodoacademico_id)
+SELECT 'matricula000000000000000000001', current_date, 'ACTIVA', 'usrestudiante00000000000000001', 'seccion00000000000000000000001', 'periodo00000000000000000000001'
+WHERE NOT EXISTS (
+	SELECT 1 FROM matricula
+	WHERE estudiante_id = 'usrestudiante00000000000000001'
+	AND seccion_id = 'seccion00000000000000000000001'
+	AND periodoacademico_id = 'periodo00000000000000000000001'
+);
+
+INSERT INTO actividad (nombre, descripcion, fechaentrega, seccion_id)
+SELECT 'Practica de figuras 3D', 'Actividad de prueba para rotacion de figuras', current_date + 7, 'seccion00000000000000000000001'
+WHERE NOT EXISTS (SELECT 1 FROM actividad WHERE nombre = 'Practica de figuras 3D');
+
+INSERT INTO evaluacion (nombre, porcentaje, fecha, seccion_id)
+SELECT 'Evaluacion diagnostica', 100, current_date + 14, 'seccion00000000000000000000001'
+WHERE NOT EXISTS (SELECT 1 FROM evaluacion WHERE nombre = 'Evaluacion diagnostica');
+
+INSERT INTO calificacion (estudiante_id, evaluacion_id, nota, observacion)
+SELECT 'usrestudiante00000000000000001', e.id, 95, 'Calificacion de prueba'
+FROM evaluacion e
+WHERE e.nombre = 'Evaluacion diagnostica'
+AND NOT EXISTS (
+	SELECT 1 FROM calificacion c
+	WHERE c.estudiante_id = 'usrestudiante00000000000000001'
+	AND c.evaluacion_id = e.id
+);
+
+INSERT INTO asistencia (fecha, presente, observacion, estudiante_id, seccion_id)
+SELECT current_date, true, 'Asistencia de prueba', 'usrestudiante00000000000000001', 'seccion00000000000000000000001'
+WHERE NOT EXISTS (
+	SELECT 1 FROM asistencia
+	WHERE fecha = current_date
+	AND estudiante_id = 'usrestudiante00000000000000001'
+	AND seccion_id = 'seccion00000000000000000000001'
+);
